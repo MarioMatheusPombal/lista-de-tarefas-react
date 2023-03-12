@@ -1,0 +1,107 @@
+.App {
+  text-align: center;
+  padding: 2rem;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.taskField{
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  font-size: 18px;
+  border: none;
+  border-bottom: 0.3rem solid #000000;
+}
+.taskButton {
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px 4px 2px;
+  cursor: pointer;
+}
+.taskButton:hover {
+  background-color: #4ca7af;
+  color: white;
+}
+.taskCard {
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border: none;
+  border-bottom: 0.3rem solid #000000;
+}
+.taskCardButton {
+  border: 0.2rem solid black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 2rem;
+  cursor: pointer;
+}
+.taskCardButton:hover {
+  background-color: #4ca7af;
+  color: white;
+}
+.taskCardEditButton {
+  border: 0.2rem solid black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 6.5rem;
+  cursor: pointer;
+  padding: 0.1rem;
+}
+.taskCardEditButton:hover {
+  background-color: #4ca7af;
+  color: white;
+}
+.taskMiniField {
+  padding: 10px 10px;
+  box-sizing: border-box;
+  resize: vertical;
+  border: none;
+  margin-left: 2rem;
+  border-bottom: 0.3rem solid #000000;
+}
