@@ -3,6 +3,7 @@ import React from "react";
 
 
 function App() {
+    const [enabledTodos, setEnabledTodos] = React.useState([]);
     const [todos, setTodos] = React.useState([]);
     const [todo, setTodo] = React.useState("");
     const [todoEditing, setTodoEditing] = React.useState(null);
@@ -25,11 +26,12 @@ function App() {
         e.preventDefault();
 
         const newTodo = {
-            id: new Date().getTime(),
+            id: new Date().getTime(), //gera um id unico utilizando a data atual, nunca se repete
             text: todo,
             completed: false,
         };
         setTodos([...todos].concat(newTodo));
+        setEnabledTodos([...todos].concat(newTodo));
         setTodo("");
     }
 
@@ -48,6 +50,15 @@ function App() {
         setTodos(updatedTodos);
     }
 
+    function getAllTodos() {
+        const json = localStorage.getItem("todos");
+        const loadedTodos = JSON.parse(json);
+        if (loadedTodos) {
+            setEnabledTodos(loadedTodos);
+        }
+
+    }
+
     function submitEdits(id) {
         const updatedTodos = [...todos].map((todo) => {
             if (todo.id === id) {
@@ -59,7 +70,18 @@ function App() {
         setTodoEditing(null);
     }
 
+    function listCompleted() {
+        let updatedTodos = [...todos].filter((todo) => todo.completed === true);
+        setEnabledTodos(updatedTodos);
+    }
+
+    function listNotCompleted() {
+        let updatedTodos = [...todos].filter((todo) => todo.completed === false);
+        setEnabledTodos(updatedTodos);
+    }
+
     return (
+
         <div className="App">
             <h1>Lista de Tarefas</h1>
             <form onSubmit={handleSubmit}>
@@ -71,8 +93,13 @@ function App() {
                 />
                 <button type="submit" className="taskButton">Adicionar Tarefa</button>
             </form>
-            {todos.map((todo) => (
-                <div className="todo-text">
+            <div className="filterButtons">
+                <button onClick={() => listCompleted()}>Completas</button>
+                <button onClick={() => getAllTodos()}>Todas as tarefas</button>
+                <button onClick={() => listNotCompleted()}>Incompletas</button>
+            </div>
+            {enabledTodos.map((todo) => (
+                <div className="todoText">
                     <input
                         type="checkbox"
                         id="completed"
@@ -87,14 +114,13 @@ function App() {
                     ) : (
                         <div>{todo.text}</div>
                     )}
-                    <div className="todo-actions">
+                    <div className="todoMiniButtons">
                         {todo.id === todoEditing ? (
-                            <button onClick={() => submitEdits(todo.id)}>Submit Edits</button>
+                            <button onClick={() => submitEdits(todo.id)}>Finalizar Edições</button>
                         ) : (
-                            <button onClick={() => setTodoEditing(todo.id)}>Edit</button>
+                            <button onClick={() => setTodoEditing(todo.id)}>Editar</button>
                         )}
-
-                        <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+                        <button onClick={() => deleteTodo(todo.id)}>Deletar</button>
                     </div>
                 </div>
             ))}

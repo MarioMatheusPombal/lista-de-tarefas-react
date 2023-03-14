@@ -105,3 +105,41 @@
   margin-left: 2rem;
   border-bottom: 0.3rem solid #000000;
 }
+.filterButtons{
+  justify-content: space-between;
+  align-items: center;
+}
+.filterButtons button{
+  margin: 0 0.5rem;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.filterButtons button:hover {
+  background-color: #4ca7af;
+  color: white;
+}
+.todoMiniButtons{
+  justify-content: space-between;
+  align-items: center;
+}
+.todoMiniButtons button{
+  margin: 0.1rem 0.1rem 2rem 0.1rem;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.todoMiniButtons button:hover {
+  background-color: #4ca7af;
+  color: white;
+}
+.todoText{
+  margin-top: 2rem;
+}
